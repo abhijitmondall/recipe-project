@@ -1,0 +1,56 @@
+:root {
+  --color-primary: black;
+  --color-secondary: white;
+  --color-red: red;
+  --color-blue: blue;
+  --text-h1: 6rem;
+  --text-h2: 4rem;
+  --text-h3: 2rem;
+  --text-p: 1.6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: var(--text-p);
+}
+
+.container {
+  background-color: var(--color-primary);
+}
+.container:hover {
+  background-color: var(--color-red);
+}
+
+.heading {
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: var(--text-h1);
+}
+
+.text {
+  background-color: var(--color-primary);
+  margin-top: 3rem;
+}
+.text__p {
+  color: var(--color-red);
+}
+
+/*# sourceMappingURL=style.css.map */

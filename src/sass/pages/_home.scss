@@ -1,0 +1,21 @@
+.container {
+  background-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-red);
+  }
+}
+
+.heading {
+  text-align: center;
+  color: var(--color-secondary);
+  font-size: var(--text-h1);
+}
+
+.text {
+  background-color: var(--color-primary);
+  margin-top: 3rem;
+  &__p {
+    color: var(--color-red);
+  }
+}
