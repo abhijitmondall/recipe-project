@@ -16,8 +16,9 @@
 
   &__input {
     font-family: inherit;
-    font-size: inherit;
-    color: inherit;
+    font-size: var(--text-1x);
+    font-weight: 600;
+    color: var(--color-grey-dark-1);
     background-color: var(--color-grey-light-2);
     border: none;
     padding: 1rem 2rem;
@@ -31,10 +32,12 @@
       width: 100%;
       background-color: var(--color-grey-light-3);
     }
+
     &::-webkit-input-placeholder {
       font-weight: 300;
     }
   }
+
   &__input:focus + &__btn {
     background-color: var(--color-grey-light-3);
   }
@@ -49,6 +52,7 @@
       transform: translateY(2px);
     }
   }
+
   &__icon {
     height: 2.25rem;
     width: 2.25rem;

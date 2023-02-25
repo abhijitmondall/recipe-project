@@ -1,6 +1,5 @@
 :root {
-  --color-primary: #eb2f64;
-  --color-primary-light: #ff3366;
+  --color-primary: #f7017f;
   --color-primary-dark: #ba265d;
   --color-secondary: #632a77;
   --color-grey-light-1: #faf9f9;
@@ -46,7 +45,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-grey-dark-1);
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -78,8 +77,9 @@ body {
 }
 .search__input {
   font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+  font-size: var(--text-1x);
+  font-weight: 600;
+  color: var(--color-grey-dark-1);
   background-color: var(--color-grey-light-2);
   border: none;
   padding: 1rem 2rem;
@@ -144,7 +144,7 @@ body {
   height: 1.9rem;
   width: 1.9rem;
   border-radius: 50%;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   color: #fff;
   position: absolute;
   top: 2.5rem;
@@ -185,7 +185,7 @@ body {
 
 .search-result {
   padding: 3rem 0;
-  background-color: var(--color-grey-dark-1);
+  background-color: var(--color-secondary);
   display: flex;
   flex: 0 0 33%;
   flex-direction: column;
@@ -220,7 +220,7 @@ body {
   max-width: 25rem;
   overflow: hidden;
   color: transparent;
-  background-image: linear-gradient(45deg, var(--color-primary-light), #632a77);
+  background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -243,7 +243,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   opacity: 0.5;
 }
 .recipe__img {
@@ -269,7 +269,7 @@ body {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   padding: 1.3rem 2rem;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   border-radius: 3px;
 }
 .recipe__details {
@@ -295,7 +295,7 @@ body {
 }
 .recipe__likes {
   align-self: stretch;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   color: #fff;
   padding: 1.6rem;
   border-top-left-radius: 8px;
@@ -304,13 +304,13 @@ body {
 .recipe__info-icon {
   height: 2.5rem;
   width: 2.5rem;
-  fill: #ba265d;
+  fill: var(--color-primary);
 }
 .recipe__likes-icon {
   fill: #fff;
 }
 .recipe__bookmark-btn {
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -341,7 +341,7 @@ body {
 }
 .recipe__summary-title {
   color: transparent;
-  background-image: linear-gradient(45deg, var(--color-primary-light), #632a77);
+  background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -355,7 +355,7 @@ body {
 }
 .recipe__ingredients-title {
   color: transparent;
-  background-image: linear-gradient(45deg, var(--color-primary-light), #632a77);
+  background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -373,7 +373,7 @@ body {
 .recipe__ingredient-icon {
   height: 2.5rem;
   width: 2.5rem;
-  fill: #ba265d;
+  fill: var(--color-primary);
 }
 .recipe__cook {
   padding: 5.5rem 3rem;
@@ -384,7 +384,7 @@ body {
 }
 .recipe__cook-title {
   color: transparent;
-  background-image: linear-gradient(45deg, var(--color-primary-light), #632a77);
+  background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -406,7 +406,7 @@ body {
   gap: 0.6rem;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-secondary));
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
 }
 .recipe__direction-icon {
   height: 2rem;

@@ -87,7 +87,7 @@
   &__info-icon {
     height: 2.5rem;
     width: 2.5rem;
-    fill: #ba265d;
+    fill: var(--color-primary);
   }
 
   &__likes-icon {
@@ -165,7 +165,7 @@
     &-icon {
       height: 2.5rem;
       width: 2.5rem;
-      fill: #ba265d;
+      fill: var(--color-primary);
     }
   }
 
