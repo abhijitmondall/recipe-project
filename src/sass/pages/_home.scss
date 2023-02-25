@@ -1,21 +1,215 @@
-.container {
-  background-color: var(--color-primary);
+@use "../abstracts/mixins";
 
-  &:hover {
-    background-color: var(--color-red);
+.recipe {
+  &__fig {
+    height: 32rem;
+    position: relative;
+    transform-origin: top;
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include mixins.bg-linear-gradient;
+      opacity: 0.5;
+    }
   }
-}
 
-.heading {
-  text-align: center;
-  color: var(--color-secondary);
-  font-size: var(--text-h1);
-}
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-.text {
-  background-color: var(--color-primary);
-  margin-top: 3rem;
-  &__p {
-    color: var(--color-red);
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20%) skewY(-7deg);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--text-4x);
+    text-transform: uppercase;
+    width: 50%;
+    line-height: 1.95;
+    text-align: center;
+    backface-visibility: hidden;
+
+    span {
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding: 1.3rem 2rem;
+      @include mixins.bg-linear-gradient;
+      border-radius: 3px;
+    }
+  }
+
+  // Recipe Details Section
+  &__details {
+    padding: 7.5rem 0rem 3.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-grey-light-2);
+  }
+
+  &__info {
+    font-size: var(--text-2x);
+    line-height: 1.7;
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  &__cooking-time,
+  &__servings,
+  &__bookmark,
+  &__likes {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__likes {
+    align-self: stretch;
+    @include mixins.bg-linear-gradient;
+    color: #fff;
+    padding: 1.6rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &__info-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #ba265d;
+  }
+
+  &__likes-icon {
+    fill: #fff;
+  }
+
+  &__bookmark-btn {
+    @include mixins.bg-linear-gradient;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    height: 4.5rem;
+    width: 4.5rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__bookmark-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #fff;
+  }
+
+  // Recipe Summary Section
+
+  %title-placeholder {
+    // Placeholder Title
+    font-size: var(--text-3x);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__summary {
+    padding: 5.5rem 3rem;
+
+    &-content {
+      @include mixins.width-80;
+    }
+
+    &-title {
+      @extend %title-placeholder;
+      @include mixins.title;
+    }
+  }
+
+  // Recipe Ingredient Section
+  &__ingredients {
+    padding: 5.5rem 3rem;
+    background-color: var(--color-grey-light-2);
+
+    &-content {
+      @include mixins.width-80;
+    }
+
+    &-title {
+      @extend %title-placeholder;
+      @include mixins.title;
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+  }
+
+  &__ingredient {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      height: 2.5rem;
+      width: 2.5rem;
+      fill: #ba265d;
+    }
+  }
+
+  // Recipe Cook Section
+  &__cook {
+    padding: 5.5rem 3rem;
+
+    &-content {
+      @include mixins.width-80;
+    }
+
+    &-title {
+      @extend %title-placeholder;
+      @include mixins.title;
+    }
+  }
+
+  &__direction-btn,
+  &__direction-btn:link,
+  &__direction-btn:visited {
+    width: 16rem;
+    font-size: var(--text-1x);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding: 1.25rem 2.25rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 100px;
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    align-items: center;
+
+    @include mixins.bg-linear-gradient;
+  }
+
+  &__direction-icon {
+    height: 2rem;
+    width: 2rem;
+    fill: #fff;
   }
 }

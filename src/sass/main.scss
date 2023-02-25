@@ -1,11 +1,13 @@
-@use "abstracts/mixins";
-@use "abstracts/variables";
+@use "./abstracts/mixins";
+@use "./abstracts/variables";
 
-@use "base/base";
-@use "base/typography";
-@use "base/utilities";
-@use "base/animations";
+@use "./base/base";
+@use "./base/typography";
+@use "./base/utilities";
+@use "./base/animations";
 
-// @use 'components/'
+@use "./components/header";
 
-@use "pages/home";
+@use "./layout/layout";
+
+@use "./pages/home";

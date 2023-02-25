@@ -1,0 +1,78 @@
+@use "../abstracts/mixins";
+
+.container {
+  max-width: 130rem;
+  margin: 8rem auto;
+  background-color: var(--color-grey-light-1);
+  box-shadow: var(--shadow-dark);
+  border-radius: 8px;
+}
+
+.header {
+  height: 9rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.recipe-container {
+  min-height: 100vh;
+  display: flex;
+}
+
+.search-result {
+  padding: 3rem 0;
+  background-color: var(--color-grey-dark-1);
+  display: flex;
+  flex: 0 0 33%;
+  flex-direction: column;
+  border-bottom-left-radius: 8px;
+}
+
+.result {
+  list-style: none;
+}
+
+.preview {
+  color: #fff;
+
+  &__link {
+    &:link,
+    &:visited {
+      color: inherit;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      padding: 1.6rem 3.6rem;
+      text-decoration: none;
+    }
+  }
+
+  &__fig > img {
+    width: 5rem;
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-size: var(--text-2x);
+    text-transform: uppercase;
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 25rem;
+    overflow: hidden;
+
+    @include mixins.title;
+  }
+}
+
+.recipe-view {
+  flex: 1;
+  background-color: var(--color-grey-light-1);
+  border-bottom-right-radius: 8px;
+}

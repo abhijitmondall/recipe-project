@@ -1,3 +1,13 @@
+@use "../abstracts/mixins";
+
 body {
-  font-size: var(--text-p);
+  font-size: var(--text-1x);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-grey-dark-1);
+  @include mixins.bg-linear-gradient;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
