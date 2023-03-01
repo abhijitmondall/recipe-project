@@ -1,10 +1,13 @@
 // Import Icons
 import icons from "url:../../img/icons.svg";
+
 // Import Fraction
 import { Fraction } from "fractional";
-// Import View
+
+// Import View Parent Class
 import View from "./view.js";
 
+// RecipeView Class
 class RecipeView extends View {
   // Select Parent Element
   _parentEl = document.querySelector(".recipe");
@@ -16,6 +19,7 @@ class RecipeView extends View {
     );
   }
 
+  // Recipe View HTML Markup
   _generateMarkUp() {
     return `
     <figure class="recipe__fig">
@@ -90,6 +94,7 @@ class RecipeView extends View {
       <h2 class="recipe__ingredients-title">Recipe Ingredients</h2>
 
       <ul class="recipe__ingredients-list">
+      
       ${this._data.ingredients.map(this._recipeIngredientsMarkUp).join("")}
 
       </ul>
@@ -118,6 +123,7 @@ class RecipeView extends View {
     `;
   }
 
+  // HTML Markup For Recipe Ingredients
   _recipeIngredientsMarkUp(ing) {
     return `
     <li class="recipe__ingredient">

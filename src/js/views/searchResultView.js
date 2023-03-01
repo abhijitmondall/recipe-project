@@ -1,22 +1,27 @@
-import * as RecipeView from "./recipeView";
+// Import View Parent Class
 import View from "./view.js";
 
 class SearchResultView extends View {
   _parentEl = document.querySelector(".result");
   _SearchInputField = document.querySelector(".search__input");
 
-  //  Recipe Search Result Handler Function - Publisher Pattern
+  //  Recipe Search Results Event Handler - Publisher Pattern
   addSearchResultHandler(handler) {
-    this._SearchInputField.addEventListener("keyup", function (e) {
-      handler(e.target.value.toLowerCase());
+    this._SearchInputField.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handler(e.target.value.toLowerCase());
+      }
     });
   }
 
-  // Search Result Markup Handler
+  // Recipe Search Results HTML Markup
   _generateMarkUp() {
+    this._SearchInputField.value = " ";
     return this._data.map(this._resultMarkUp).join("");
   }
 
+  // HTML Markup with Search Results Dynamic data
   _resultMarkUp(data) {
     return `
     <li class="preview">

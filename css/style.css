@@ -190,6 +190,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  padding: 3rem 6rem;
 }
 .error svg {
   height: 6rem;
