@@ -152,7 +152,6 @@
     &-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      justify-items: center;
       gap: 2rem;
       margin-top: 3rem;
     }
@@ -163,10 +162,14 @@
     align-items: center;
 
     &-icon {
-      height: 2.5rem;
-      width: 2.5rem;
+      height: 2.25rem;
+      width: 2.25rem;
       fill: var(--color-primary);
     }
+  }
+
+  &__quantity {
+    margin-right: 0.6rem;
   }
 
   // Recipe Cook Section

@@ -1,0 +1,16 @@
+.error {
+  height: 100%;
+  font-size: var(--text-3x);
+  font-weight: 700;
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  svg {
+    height: 6rem;
+    width: 6rem;
+    fill: var(--color-primary);
+  }
+}

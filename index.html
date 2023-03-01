@@ -16,6 +16,9 @@
     <!-- Linked Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
 
+    <!-- Linked Script -->
+    <script type="module" defer src="./src/js/controller.js"></script>
+
     <title>Recipe Web Application</title>
   </head>
   <body>
@@ -31,16 +34,14 @@
           />
           <button class="search__btn">
             <svg class="search__icon">
-              <use
-                xlink:href="./src/img/sprite.svg#icon-magnifying-glass"
-              ></use>
+              <use xlink:href="./src/img/icons.svg#icon-magnifying-glass"></use>
             </svg>
           </button>
         </form>
         <nav class="recipe-nav">
           <div class="recipe-nav__icon-wrap">
             <svg class="recipe-nav__icon">
-              <use xlink:href="./src/img/sprite.svg#icon-bookmark"></use>
+              <use xlink:href="./src/img/icons.svg#icon-bookmark"></use>
             </svg>
             <span class="recipe-nav__notification">7</span>
           </div>
@@ -63,24 +64,10 @@
         <div class="search-result">
           <ul class="result">
             <!-- Result Preview -->
-            <li class="preview">
-              <a class="preview__link" href="#11111">
-                <figure class="preview__fig">
-                  <img src="./src/img/Avi.jpg" alt="" />
-                </figure>
-                <!-- Result Preview Data -->
-                <div class="preview__data">
-                  <h4 class="preview__title">
-                    This is a recipe title for test purpose
-                  </h4>
-                  <p class="preview__publisher">Publisher</p>
-                  <!-- <div class="preview__user">Preview User</div> -->
-                </div>
-              </a>
-            </li>
+
             <!-- test -->
             <li class="preview">
-              <a class="preview__link" href="#22222">
+              <a class="preview__link" href="#5ed6604691c37cdc054bd0d4">
                 <figure class="preview__fig">
                   <img src="./src/img/Avi.jpg" alt="" />
                 </figure>
@@ -106,164 +93,7 @@
 
         <!-- Starting Line Of The Recipe View Part -->
         <main class="recipe-view">
-          <div class="recipe">
-            <figure class="recipe__fig">
-              <img src="./src/img/demo.jpg" alt="" class="recipe__img" />
-              <h1 class="recipe__title">
-                <span> This is a recipe title for testing purpose </span>
-              </h1>
-            </figure>
-
-            <!-- Recipe Details Section -->
-            <section class="recipe__details">
-              <div class="recipe__info recipe__info-left">
-                <div class="recipe__cooking-time">
-                  <svg class="recipe__info-icon recipe__cooking-time-icon">
-                    <use xlink:href="./src/img/sprite.svg#icon-stopwatch"></use>
-                  </svg>
-
-                  <div>
-                    <span class="recipe__info-data">45</span>
-                    <span class="recipe__info-text">minutes</span>
-                  </div>
-                </div>
-
-                <div class="recipe__servings">
-                  <svg class="recipe__info-icon recipe__servings-icon">
-                    <use xlink:href="./src/img/sprite.svg#icon-add-user"></use>
-                  </svg>
-                  <div>
-                    <span class="recipe__info-data">4</span>
-                    <span class="recipe__info-text">servings</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="recipe__info recipe__info-right">
-                <div class="recipe__bookmark">
-                  <button class="recipe__bookmark-btn">
-                    <svg class="recipe__info-icon recipe__bookmark-icon">
-                      <use
-                        xlink:href="./src/img/sprite.svg#icon-bookmark"
-                      ></use>
-                    </svg>
-                  </button>
-                </div>
-
-                <div class="recipe__likes">
-                  <svg class="recipe__info-icon recipe__likes-icon">
-                    <use xlink:href="./src/img/sprite.svg#icon-thumbs-up"></use>
-                  </svg>
-
-                  <div>
-                    <span class="recipe__info-data">40</span>
-                    <span class="recipe__info-text">Likes</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- Recipe Summary Section -->
-            <section class="recipe__summary">
-              <div class="recipe__summary-content">
-                <h2 class="recipe__summary-title">Recipe Summery</h2>
-                <p class="recipe__summary-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptatum et autem tempora ipsam aperiam! Laudantium suscipit
-                  hic magni officiis fugit illo minima eaque provident
-                  accusantium! Laudantium, accusantium! Molestias nam voluptas
-                  nisi voluptates repudiandae beatae esse laudantium repellat
-                  adipisci natus temporibus quisquam ipsum commodi iure tempora,
-                  maxime minus architecto. Inventore sed minima eaque blanditiis
-                  omnis nemo, sunt harum officia. Sint, esse natus! Dolor
-                  inventore corrupti assumenda vitae, sapiente doloremque
-                  possimus laudantium impedit voluptatem ullam necessitatibus
-                  aut nesciunt quia ducimus eius. Dolor.
-                </p>
-              </div>
-            </section>
-
-            <!-- Recipe Ingredients Section -->
-            <section class="recipe__ingredients">
-              <div class="recipe__ingredients-content">
-                <h2 class="recipe__ingredients-title">Recipe Ingredients</h2>
-
-                <ul class="recipe__ingredients-list">
-                  <li class="recipe__ingredient">
-                    <svg class="recipe__ingredient-icon">
-                      <use xlink:href="./src/img/sprite.svg#icon-check"></use>
-                    </svg>
-                    <div class="recipe__quantity">
-                      8
-                      <span class="recipe__unit">g</span>
-                    </div>
-                    <div class="recipe__description">cooked leftover pasta</div>
-                  </li>
-                  <!-- test -->
-                  <li class="recipe__ingredient">
-                    <svg class="recipe__ingredient-icon">
-                      <use xlink:href="./src/img/sprite.svg#icon-check"></use>
-                    </svg>
-                    <div class="recipe__quantity">
-                      8
-                      <span class="recipe__unit">g</span>
-                    </div>
-                    <div class="recipe__description">cooked leftover pasta</div>
-                  </li>
-                  <!-- test -->
-                  <li class="recipe__ingredient">
-                    <svg class="recipe__ingredient-icon">
-                      <use xlink:href="./src/img/sprite.svg#icon-check"></use>
-                    </svg>
-                    <div class="recipe__quantity">
-                      8
-                      <span class="recipe__unit">g</span>
-                    </div>
-                    <div class="recipe__description">cooked leftover pasta</div>
-                  </li>
-                  <!-- test -->
-                  <li class="recipe__ingredient">
-                    <svg class="recipe__ingredient-icon">
-                      <use xlink:href="./src/img/sprite.svg#icon-check"></use>
-                    </svg>
-                    <div class="recipe__quantity">
-                      8
-                      <span class="recipe__unit">g</span>
-                    </div>
-                    <div class="recipe__description">cooked leftover pasta</div>
-                  </li>
-                </ul>
-              </div>
-            </section>
-
-            <!-- Recipe Cooking Section -->
-            <section class="recipe__cook">
-              <div class="recipe__cook-content">
-                <h2 class="recipe__cook-title">How To Cook It?</h2>
-
-                <p class="recipe__cook-text">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptatum et autem tempora ipsam aperiam! Laudantium suscipit
-                  hic magni officiis fugit illo minima eaque provident
-                  accusantium! Laudantium, accusantium! Molestias nam voluptas
-                  nisi voluptates repudiandae beatae esse laudantium repellat
-                  adipisci natus temporibus quisquam ipsum commodi iure tempora,
-                  maxime minus architecto. Inventore sed minima eaque blanditiis
-                  omnis nemo, sunt harum officia. Sint, esse natus! Dolor
-                  inventore corrupti assumenda vitae, sapiente doloremque
-                  possimus laudantium impedit voluptatem ullam necessitatibus
-                  aut nesciunt quia ducimus eius. Dolor.
-                </p>
-
-                <a href="#" class="recipe__direction-btn">
-                  Direction
-                  <svg class="recipe__direction-icon">
-                    <use xlink:href="./src/img/sprite.svg#icon-direction"></use>
-                  </svg>
-                </a>
-              </div>
-            </section>
-          </div>
+          <div class="recipe"></div>
         </main>
         <!-- Ending Line Of The Recipe View Part -->
       </div>
