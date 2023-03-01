@@ -1,6 +1,7 @@
 // Import Icons
 import icons from "url:../../img/icons.svg";
 
+// Parent View Class
 export default class View {
   _errorMessage = "No Recipe Found! Please Try Again!";
   _data;
@@ -34,6 +35,7 @@ export default class View {
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }
 
+  // Recipe Render
   render(data) {
     this._data = data;
     const markUp = this._generateMarkUp();
@@ -41,6 +43,7 @@ export default class View {
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }
 
+  // Clear Parent Element Container
   _clear() {
     this._parentEl.innerHTML = " ";
   }
