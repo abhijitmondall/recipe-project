@@ -22,6 +22,7 @@ export default class View {
 
   // Render Error
   renderError(message = this._errorMessage) {
+    this._clear();
     const markUp = `
       <div class="error">
         <span>${message}</span>
@@ -31,20 +32,19 @@ export default class View {
       </svg>
       </div>
       `;
-    this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }
 
   // Recipe Render
   render(data) {
+    this._clear();
     this._data = data;
     const markUp = this._generateMarkUp();
-    this._clear();
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }
 
   // Clear Parent Element Container
   _clear() {
-    this._parentEl.innerHTML = " ";
+    this._parentEl.innerHTML = "";
   }
 }

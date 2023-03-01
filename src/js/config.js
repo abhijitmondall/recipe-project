@@ -20,3 +20,7 @@ export const API_KEY3 = "28838e56-4642-437c-bb0f-b596153c9ad3";
 
 // HTTP Request Timeout Seconds
 export const TIMEOUT_SEC = 10;
+
+// Page Limit
+
+export const PER_PAGE_LOAD = 5;

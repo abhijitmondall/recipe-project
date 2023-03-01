@@ -1,14 +1,7 @@
-// Import From Config
 import { async } from "regenerator-runtime";
-import { API_URL } from "./config.js";
-import { API_URL2 } from "./config.js";
-import { API_URL3 } from "./config.js";
-import { API_URL4 } from "./config.js";
 
-import { RECIPE_SEARCH_LIMIT } from "./config.js";
-import { API_KEY1 } from "./config.js";
-import { API_KEY2 } from "./config.js";
-import { API_KEY3 } from "./config.js";
+// Import From Config
+import * as config from "./config.js";
 
 // Import From Helpers
 import { getJSON } from "./helpers.js";
@@ -21,6 +14,8 @@ export const state = {
   search: {
     query: "",
     results: [],
+    recipePerPage: config.PER_PAGE_LOAD,
+    pageNumber: 1,
   },
 };
 
@@ -31,16 +26,18 @@ export const state = {
 export const loadRecipe = async function (ID) {
   try {
     // const data = await getJSON(
-    //   `${API_URL}${ID}/information?apiKey=${API_KEY2}`
+    //   `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
     // );
-    const data = await getJSON(`${API_URL3}${ID}?key=${API_KEY3}`);
+    const data = await getJSON(
+      `${config.API_URL3}${ID}?key=${config.API_KEY3}`
+    );
 
     let finalData = data;
 
     // This is a public API so if one public API is crossed the limit then fetch another public API
     // if (data.code === 402) {
     //   const data = await getJSON(
-    //     `${API_URL}${ID}/information?apiKey=${API_KEY2}`
+    //     `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
     //   );
 
     //   if (data.status === "failure")
@@ -91,10 +88,13 @@ export const loadRecipeSearchResults = async function (query) {
     // const data = await getJSON(
     //   `${API_URL2}${query}&number${RECIPE_SEARCH_LIMIT}&apiKey=${API_KEY2}`
     // );
-    const data = await getJSON(`${API_URL4}${query}&key=${API_KEY3}`);
+    const data = await getJSON(
+      `${config.API_URL4}${query}&key=${config.API_KEY3}`
+    );
     if (data.data.recipes.length === 0)
       throw new Error(
-        "Recipe Not Found For Your Query! Please Try Again with Another One!"
+        `Recipe Not Found For Your Query! 
+        Please Try Again With Another Ingredients!`
       );
 
     // state.search.results = data.map((recipe) => {
@@ -116,4 +116,12 @@ export const loadRecipeSearchResults = async function (query) {
   } catch (err) {
     throw err;
   }
+};
+
+export const getSearchResultsPage = function (page = state.search.pageNumber) {
+  state.search.pageNumber = page;
+  const firstPage = (page - 1) * state.search.recipePerPage;
+  const lastPage = page * state.search.recipePerPage;
+
+  return state.search.results.slice(firstPage, lastPage);
 };

@@ -1,3 +1,6 @@
+// Import Icons
+import icons from "url:../../img/icons.svg";
+
 // Import View Parent Class
 import View from "./view.js";
 
@@ -6,7 +9,7 @@ class SearchResultView extends View {
   _SearchInputField = document.querySelector(".search__input");
 
   //  Recipe Search Results Event Handler - Publisher Pattern
-  addSearchResultHandler(handler) {
+  searchResultHandler(handler) {
     this._SearchInputField.addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
         e.preventDefault();
@@ -17,7 +20,19 @@ class SearchResultView extends View {
 
   // Recipe Search Results HTML Markup
   _generateMarkUp() {
-    this._SearchInputField.value = " ";
+    this._SearchInputField.value = "";
+
+    // Show A Message In The Recipe Container
+    document.querySelector(".recipe").innerHTML = `
+      <div class="recipe__init-text">
+      <span>Please click on the recipe to view the recipe information! </span>
+
+      <svg class="recipe__icon">
+      <use xlink:href="${icons}#icon-emoji-flirt"></use>
+    </svg>
+    </div>
+    `;
+
     return this._data.map(this._resultMarkUp).join("");
   }
 

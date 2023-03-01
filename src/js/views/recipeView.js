@@ -13,7 +13,7 @@ class RecipeView extends View {
   _parentEl = document.querySelector(".recipe");
 
   //  Recipe Render Handler Function - Publisher Pattern
-  addHandlerRender(handler) {
+  recipeRenderHandler(handler) {
     ["hashchange", "load"].forEach((ev) =>
       window.addEventListener(ev, handler)
     );
