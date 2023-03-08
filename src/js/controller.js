@@ -27,17 +27,21 @@ const controlRecipes = async function () {
     const ID = window.location.hash.slice(1);
     if (!ID) return;
 
+    // Call loadRecipe Method From model & Pass Recipe ID
+    await model.loadRecipe(ID);
+
     // Call render Method by searchResultView to render search results
     searchResultView.render(model.getSearchResultsPage());
 
     // Render Bookmarks
     bookmarksView.render(model.state.bookmarks);
 
+    console.log(model.state.bookmarks);
+    // Total Numbers Of Bookmarks
+    bookmarksView.totalBookmarks(model.state.totalBookmarks);
+
     // Call renderSpinner Method by recipeView
     recipeView.renderSpinner();
-
-    // Call loadRecipe Method From model & Pass Recipe ID
-    await model.loadRecipe(ID);
 
     // Call render Method by recipeView to render recipe
     recipeView.render(model.state.recipe);
@@ -83,7 +87,7 @@ const controlPagination = function (pageNumber) {
   paginationView.render(model.state.search);
 };
 
-const controlBookmarks = function () {
+const controlAddBookmarks = function () {
   if (!model.state.recipe.bookmarked) {
     model.addBookmark(model.state.recipe);
   } else {
@@ -93,6 +97,14 @@ const controlBookmarks = function () {
   // Render Recipe
   recipeView.render(model.state.recipe);
 
+  // Render Bookmarks
+  bookmarksView.render(model.state.bookmarks);
+
+  // Total Numbers Of Bookmarks
+  bookmarksView.totalBookmarks(model.state.totalBookmarks);
+};
+
+const controlBookmarks = function () {
   // Render Bookmarks
   bookmarksView.render(model.state.bookmarks);
 
@@ -113,7 +125,10 @@ const init = function () {
   paginationView.paginationPageHandler(controlPagination);
 
   // Bookmarks Handler
-  recipeView.renderBookmarksHandler(controlBookmarks);
+  recipeView.renderBookmarksHandler(controlAddBookmarks);
+
+  // Bookmarks Render
+  bookmarksView.addHandlerBookmarks(controlBookmarks);
 };
 
 // Init Function Call

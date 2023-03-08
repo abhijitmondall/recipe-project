@@ -131,11 +131,19 @@ export const getSearchResultsPage = function (page = state.search.pageNumber) {
   return state.search.results.slice(firstPage, lastPage);
 };
 
+// Store The Data To The Local Storage
+const storeBookmarks = function () {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+  localStorage.setItem("totalBookmarks", JSON.stringify(state.totalBookmarks));
+};
+
 export const addBookmark = function (recipe) {
   state.bookmarks.push(recipe);
-  state.totalBookmarks += 1;
+  state.totalBookmarks = state.bookmarks.length;
 
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+
+  storeBookmarks();
 };
 
 export const deleteBookmark = function (id) {
@@ -145,5 +153,17 @@ export const deleteBookmark = function (id) {
 
   if (id === state.recipe.id) state.recipe.bookmarked = false;
 
-  state.totalBookmarks -= 1;
+  state.totalBookmarks = state.bookmarks.length;
+  storeBookmarks();
 };
+
+// get The Data From The Local Storage
+(() => {
+  const storage = localStorage.getItem("bookmarks");
+  const total = localStorage.getItem("totalBookmarks");
+
+  if (storage) state.bookmarks = JSON.parse(storage);
+  if (total) state.totalBookmarks = JSON.parse(total);
+})();
+
+console.log(state.bookmarks);

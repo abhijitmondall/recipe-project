@@ -13,6 +13,12 @@ class BookmarksView extends View {
     this._bookmarksTotal.textContent = data;
   }
 
+  addHandlerBookmarks(handler) {
+    window.addEventListener("load", function () {
+      handler();
+    });
+  }
+
   // Recipe Search Results HTML Markup
   _generateMarkUp() {
     return this._data.map(this._resultMarkUp).join("");

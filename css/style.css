@@ -134,26 +134,30 @@ body {
 .recipe-nav__icon-wrap {
   position: relative;
   text-transform: uppercase;
+  color: var(--color-grey-dark-2);
   font-weight: 500;
 }
 .recipe-nav__icon-wrap .bookmarks {
   width: 45rem;
   max-width: 45rem;
+  color: #fff !important;
   background-color: var(--color-secondary);
-  z-index: 999;
   visibility: hidden;
   position: absolute;
   top: 9rem;
-  right: -17.1rem;
+  opacity: 0;
+  right: -26rem;
   transition: all 0.3s;
-  color: #fff !important;
+  z-index: 999;
+  cursor: initial !important;
 }
 .recipe-nav__icon-wrap .bookmarks__lists {
   list-style: none;
 }
 .recipe-nav__icon-wrap:hover > .bookmarks {
-  transition: all 0.3s;
   visibility: visible;
+  opacity: 1;
+  right: -17.2rem;
 }
 .recipe-nav__icon {
   height: 2.5rem;
@@ -177,8 +181,13 @@ body {
 }
 .recipe-nav__user {
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 700;
+  color: transparent;
+  background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
   margin-right: 1.6rem;
+  cursor: initial;
 }
 .recipe-nav__user-photo {
   height: 5rem;
