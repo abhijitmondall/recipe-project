@@ -39,7 +39,7 @@ class BookmarksView extends View {
         }">
         ${data.title}
         </h4>
-        <p class="preview__publisher">${data.publisher ?? data.likes} Likes</p>
+        <p class="preview__publisher">${data.likes ?? ""} Likes</p>
         <!-- <div class="preview__user">Preview User</div> -->
       </div>
     </a>
