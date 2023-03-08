@@ -28,15 +28,15 @@ export const state = {
 export const loadRecipe = async function (ID) {
   try {
     // const data = await getJSON(
-    //   `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
+    //   `${config.API_URL}${ID}/information?apiKey=${config.API_KEY1}`
     // );
     const data = await getJSON(
       `${config.API_URL3}${ID}?key=${config.API_KEY3}`
     );
 
     let finalData = data;
-
-    // This is a public API so if one public API is crossed the limit then fetch another public API
+    // console.log(data.code);
+    // // This is a public API so if one public API is crossed the limit then fetch another public API
     // if (data.code === 402) {
     //   const data = await getJSON(
     //     `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
@@ -49,7 +49,7 @@ export const loadRecipe = async function (ID) {
     // }
 
     // const recipe = finalData;
-    // if (finalData === undefined) throw new Error("hey");
+
     // state.recipe = {
     //   id: recipe.id,
     //   title: recipe.title,
@@ -94,12 +94,13 @@ export const loadRecipe = async function (ID) {
 export const loadRecipeSearchResults = async function (query) {
   try {
     // const data = await getJSON(
-    //   `${API_URL2}${query}&number${RECIPE_SEARCH_LIMIT}&apiKey=${API_KEY2}`
+    //   `${config.API_URL2}${query}&number${config.RECIPE_SEARCH_LIMIT}&apiKey=${config.API_KEY2}`
     // );
     const data = await getJSON(
       `${config.API_URL4}${query}&key=${config.API_KEY3}`
     );
 
+    // console.log(data);
     // state.search.results = data.map((recipe) => {
     //   return {
     //     id: recipe.id,

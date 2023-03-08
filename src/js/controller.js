@@ -27,11 +27,11 @@ const controlRecipes = async function () {
     const ID = window.location.hash.slice(1);
     if (!ID) return;
 
-    // Call loadRecipe Method From model & Pass Recipe ID
-    await model.loadRecipe(ID);
+    // Call renderSpinner Method by recipeView
+    recipeView.renderSpinner();
 
-    // // Call render Method by searchResultView to render search results
-    // searchResultView.render(model.getSearchResultsPage());
+    // Call render Method by searchResultView to render search results To Mark Selected Recipe
+    searchResultView.update(model.getSearchResultsPage());
 
     // Render Bookmarks
     bookmarksView.render(model.state.bookmarks);
@@ -39,8 +39,8 @@ const controlRecipes = async function () {
     // Total Numbers Of Bookmarks
     bookmarksView.totalBookmarks(model.state.totalBookmarks);
 
-    // Call renderSpinner Method by recipeView
-    recipeView.renderSpinner();
+    // Call loadRecipe Method From model & Pass Recipe ID
+    await model.loadRecipe(ID);
 
     // Call render Method by recipeView to render recipe
     recipeView.render(model.state.recipe);

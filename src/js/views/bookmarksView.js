@@ -1,11 +1,9 @@
-// Import Icons
-import icons from "url:../../img/icons.svg";
-
 // Import View Parent Class
 import View from "./view.js";
 
 class BookmarksView extends View {
   _parentEl = document.querySelector(".bookmarks__lists");
+  _resultEl = document.querySelector(".result");
   _bookmarksTotal = document.querySelector(".bookmarks--total");
   _errorMessage = "No Bookmarks Found! Find & Bookmark Your Favorite Recipe!";
 
@@ -14,9 +12,7 @@ class BookmarksView extends View {
   }
 
   addHandlerBookmarks(handler) {
-    window.addEventListener("load", function () {
-      handler();
-    });
+    window.addEventListener("load", handler);
   }
 
   // Recipe Search Results HTML Markup

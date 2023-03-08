@@ -23,6 +23,7 @@ class RecipeView extends View {
   renderBookmarksHandler(handler) {
     this._parentEl.addEventListener("click", function (e) {
       const checkBookmarkBTN = e.target.closest(".btn--bookmark");
+      e.preventDefault();
       if (!checkBookmarkBTN) return;
 
       handler();

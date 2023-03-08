@@ -81,10 +81,13 @@
 
   &__icon-wrap {
     position: relative;
-    text-transform: uppercase;
     // @include mixins.title;
     color: var(--color-grey-dark-2);
     font-weight: 500;
+
+    &-title {
+      text-transform: uppercase;
+    }
 
     .bookmarks {
       width: 45rem;

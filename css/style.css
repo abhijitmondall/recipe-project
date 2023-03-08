@@ -133,9 +133,11 @@ body {
 }
 .recipe-nav__icon-wrap {
   position: relative;
-  text-transform: uppercase;
   color: var(--color-grey-dark-2);
   font-weight: 500;
+}
+.recipe-nav__icon-wrap-title {
+  text-transform: uppercase;
 }
 .recipe-nav__icon-wrap .bookmarks {
   width: 45rem;
@@ -219,7 +221,7 @@ body {
 }
 .error {
   height: 100%;
-  font-size: var(--text-3x);
+  font-size: var(--text-2x);
   font-weight: 700;
   min-height: 50vh;
   display: flex;

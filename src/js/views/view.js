@@ -45,6 +45,14 @@ export default class View {
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }
 
+  // Recipe Update
+  update(data) {
+    this._data = data;
+    this._clear();
+    const markUp = this._generateMarkUp();
+    this._parentEl.insertAdjacentHTML("afterbegin", markUp);
+  }
+
   // Clear Parent Element Container
   _clear() {
     this._parentEl.innerHTML = "";
