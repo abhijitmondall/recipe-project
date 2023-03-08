@@ -10,6 +10,8 @@ class PaginationView extends View {
   // Pagination Button Event Handler
   paginationPageHandler(handler) {
     this._parentEl.addEventListener("click", function (e) {
+      e.preventDefault();
+
       const checkBTN = e.target.closest(".pagination__btn--action");
       if (!checkBTN) return;
 

@@ -26,17 +26,17 @@
 
 .search-result {
   padding: 3rem 0;
-  // background-color: var(--color-grey-dark-1);
   background-color: var(--color-secondary);
   display: flex;
   flex: 0 0 33%;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
   border-bottom-left-radius: 8px;
 }
 
 .result {
   list-style: none;
+  color: #fff;
 }
 
 .preview {
@@ -50,7 +50,13 @@
       gap: 2rem;
       align-items: center;
       padding: 1.6rem 3.6rem;
+      margin: 1.6rem 0 !important;
       text-decoration: none;
+    }
+
+    &--active {
+      @include mixins.bg-linear-gradient;
+      color: #fff !important;
     }
   }
 
@@ -69,8 +75,16 @@
     white-space: nowrap;
     max-width: 25rem;
     overflow: hidden;
-
     @include mixins.title;
+
+    &--active {
+      color: var(--color-grey-light-1);
+    }
+  }
+
+  &__publisher {
+    color: var(--color-grey-light-4);
+    font-weight: 500;
   }
 }
 

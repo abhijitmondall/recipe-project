@@ -4,25 +4,17 @@ import icons from "url:../../img/icons.svg";
 // Import View Parent Class
 import View from "./view.js";
 
-class SearchResultView extends View {
-  _parentEl = document.querySelector(".result");
-  _SearchInputField = document.querySelector(".search__input");
-  _errorMessage = "No Recipe Found! Please Try Again!";
+class BookmarksView extends View {
+  _parentEl = document.querySelector(".bookmarks__lists");
+  _bookmarksTotal = document.querySelector(".bookmarks--total");
+  _errorMessage = "No Bookmarks Found! Find & Bookmark Your Favorite Recipe!";
 
-  //  Recipe Search Results Event Handler - Publisher Pattern
-  searchResultHandler(handler) {
-    this._SearchInputField.addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        handler(e.target.value.toLowerCase());
-      }
-    });
+  totalBookmarks(data) {
+    this._bookmarksTotal.textContent = data;
   }
 
   // Recipe Search Results HTML Markup
   _generateMarkUp() {
-    this._SearchInputField.value = "";
-
     return this._data.map(this._resultMarkUp).join("");
   }
 
@@ -31,7 +23,7 @@ class SearchResultView extends View {
     const id = window.location.hash.slice(1);
 
     return `
-    <li class="preview ">
+    <li class="preview">
     <a class="preview__link ${
       data.id === id ? "preview__link--active" : " "
     }" href="#${data.id}">
@@ -54,4 +46,4 @@ class SearchResultView extends View {
   }
 }
 
-export default new SearchResultView();
+export default new BookmarksView();

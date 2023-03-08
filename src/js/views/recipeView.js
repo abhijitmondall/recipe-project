@@ -11,12 +11,22 @@ import View from "./view.js";
 class RecipeView extends View {
   // Select Parent Element
   _parentEl = document.querySelector(".recipe");
+  _errorMessage = "No Recipe Found! Please Try Again!";
 
   //  Recipe Render Handler Function - Publisher Pattern
   recipeRenderHandler(handler) {
     ["hashchange", "load"].forEach((ev) =>
       window.addEventListener(ev, handler)
     );
+  }
+
+  renderBookmarksHandler(handler) {
+    this._parentEl.addEventListener("click", function (e) {
+      const checkBookmarkBTN = e.target.closest(".btn--bookmark");
+      if (!checkBookmarkBTN) return;
+
+      handler();
+    });
   }
 
   // Recipe View HTML Markup
@@ -56,8 +66,12 @@ class RecipeView extends View {
 
     <div class="recipe__info recipe__info-right">
       <div class="recipe__bookmark">
-        <button class="recipe__bookmark-btn">
-          <svg class="recipe__info-icon recipe__bookmark-icon">
+        <button class="recipe__bookmark-btn btn--bookmark">
+          <svg class="recipe__info-icon ${
+            this._data.bookmarked
+              ? "recipe__bookmark-icon-bookmarked"
+              : "recipe__bookmark-icon"
+          }">
             <use
               xlink:href="${icons}#icon-bookmark"
             ></use>

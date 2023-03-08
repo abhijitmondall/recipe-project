@@ -40,10 +40,19 @@
         </form>
         <nav class="recipe-nav">
           <div class="recipe-nav__icon-wrap">
+            <p>Bookmarks</p>
             <svg class="recipe-nav__icon">
               <use xlink:href="./src/img/icons.svg#icon-bookmark"></use>
             </svg>
-            <span class="recipe-nav__notification">7</span>
+            <span class="recipe-nav__notification bookmarks--total"> 0 </span>
+
+            <div class="bookmarks">
+              <ul class="bookmarks__lists">
+                <div class="error">
+                  <span>No Bookmarks Yet! ⚠</span>
+                </div>
+              </ul>
+            </div>
           </div>
 
           <div class="recipe-nav__user">
@@ -56,6 +65,7 @@
           </div>
         </nav>
       </header>
+
       <!-- Ending Line Of The Header Part -->
 
       <!-- Starting Line Of The Recipe Part -->

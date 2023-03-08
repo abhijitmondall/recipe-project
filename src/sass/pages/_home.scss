@@ -127,6 +127,12 @@
   &__bookmark-icon {
     height: 2.5rem;
     width: 2.5rem;
+    fill: var(--color-grey-dark-2);
+  }
+
+  &__bookmark-icon-bookmarked {
+    height: 2.5rem;
+    width: 2.5rem;
     fill: #fff;
   }
 

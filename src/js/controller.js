@@ -15,6 +15,9 @@ import searchResultView from "./views/searchResultView.js";
 // Import From paginationView
 import paginationView from "./views/paginationView.js";
 
+// Import From BookmarksView
+import bookmarksView from "./views/bookmarksView.js";
+
 /**
  * Control Recipes Render
  * @returns
@@ -23,6 +26,12 @@ const controlRecipes = async function () {
   try {
     const ID = window.location.hash.slice(1);
     if (!ID) return;
+
+    // Call render Method by searchResultView to render search results
+    searchResultView.render(model.getSearchResultsPage());
+
+    // Render Bookmarks
+    bookmarksView.render(model.state.bookmarks);
 
     // Call renderSpinner Method by recipeView
     recipeView.renderSpinner();
@@ -53,15 +62,12 @@ const controlRecipeSearchResult = async function (query) {
     await model.loadRecipeSearchResults(query);
 
     // Call render Method by searchResultView to render search results
-    searchResultView.render(model.getSearchResultsPage(1));
+    searchResultView.render(model.getSearchResultsPage());
 
     // Call render Method by paginationView to render pagination button
     paginationView.render(model.state.search);
   } catch (err) {
     console.error(err);
-
-    // Call renderError Method by recipeView
-    recipeView.renderError(err.message);
   }
 };
 
@@ -77,6 +83,23 @@ const controlPagination = function (pageNumber) {
   paginationView.render(model.state.search);
 };
 
+const controlBookmarks = function () {
+  if (!model.state.recipe.bookmarked) {
+    model.addBookmark(model.state.recipe);
+  } else {
+    model.deleteBookmark(model.state.recipe.id);
+  }
+
+  // Render Recipe
+  recipeView.render(model.state.recipe);
+
+  // Render Bookmarks
+  bookmarksView.render(model.state.bookmarks);
+
+  // Total Numbers Of Bookmarks
+  bookmarksView.totalBookmarks(model.state.totalBookmarks);
+};
+
 /**
  * Init function to control event handler - Subscribe Pattern
  */
@@ -88,6 +111,9 @@ const init = function () {
   searchResultView.searchResultHandler(controlRecipeSearchResult);
 
   paginationView.paginationPageHandler(controlPagination);
+
+  // Bookmarks Handler
+  recipeView.renderBookmarksHandler(controlBookmarks);
 };
 
 // Init Function Call

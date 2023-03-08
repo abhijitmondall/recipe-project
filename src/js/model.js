@@ -17,6 +17,8 @@ export const state = {
     recipePerPage: config.PER_PAGE_LOAD,
     pageNumber: 1,
   },
+  bookmarks: [],
+  totalBookmarks: 0,
 };
 
 /**
@@ -74,6 +76,12 @@ export const loadRecipe = async function (ID) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
+
+    if (state.bookmarks.some((bookmark) => bookmark.id === ID)) {
+      state.recipe.bookmarked = true;
+    } else {
+      state.recipe.bookmarked = false;
+    }
   } catch (err) {
     throw err;
   }
@@ -91,11 +99,6 @@ export const loadRecipeSearchResults = async function (query) {
     const data = await getJSON(
       `${config.API_URL4}${query}&key=${config.API_KEY3}`
     );
-    if (data.data.recipes.length === 0)
-      throw new Error(
-        `Recipe Not Found For Your Query! 
-        Please Try Again With Another Ingredients!`
-      );
 
     // state.search.results = data.map((recipe) => {
     //   return {
@@ -113,6 +116,8 @@ export const loadRecipeSearchResults = async function (query) {
         image: recipe.image_url,
       };
     });
+
+    state.search.pageNumber = 1;
   } catch (err) {
     throw err;
   }
@@ -124,4 +129,21 @@ export const getSearchResultsPage = function (page = state.search.pageNumber) {
   const lastPage = page * state.search.recipePerPage;
 
   return state.search.results.slice(firstPage, lastPage);
+};
+
+export const addBookmark = function (recipe) {
+  state.bookmarks.push(recipe);
+  state.totalBookmarks += 1;
+
+  if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+};
+
+export const deleteBookmark = function (id) {
+  const index = state.bookmarks.findIndex((el) => el.id === id);
+
+  state.bookmarks.splice(index, 1);
+
+  if (id === state.recipe.id) state.recipe.bookmarked = false;
+
+  state.totalBookmarks -= 1;
 };

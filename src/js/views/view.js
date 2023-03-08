@@ -3,7 +3,6 @@ import icons from "url:../../img/icons.svg";
 
 // Parent View Class
 export default class View {
-  _errorMessage = "No Recipe Found! Please Try Again!";
   _data;
 
   // Render Spinner
@@ -37,6 +36,9 @@ export default class View {
 
   // Recipe Render
   render(data) {
+    if (!data || (Array.isArray(data) && data.length === 0))
+      return this.renderError();
+
     this._clear();
     this._data = data;
     const markUp = this._generateMarkUp();

@@ -119,6 +119,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-self: stretch;
+  position: relative;
 }
 .recipe-nav > * {
   padding: 0 2rem;
@@ -132,6 +133,27 @@ body {
 }
 .recipe-nav__icon-wrap {
   position: relative;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.recipe-nav__icon-wrap .bookmarks {
+  width: 45rem;
+  max-width: 45rem;
+  background-color: var(--color-secondary);
+  z-index: 999;
+  visibility: hidden;
+  position: absolute;
+  top: 9rem;
+  right: -17.1rem;
+  transition: all 0.3s;
+  color: #fff !important;
+}
+.recipe-nav__icon-wrap .bookmarks__lists {
+  list-style: none;
+}
+.recipe-nav__icon-wrap:hover > .bookmarks {
+  transition: all 0.3s;
+  visibility: visible;
 }
 .recipe-nav__icon {
   height: 2.5rem;
@@ -152,6 +174,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.recipe-nav__user {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 1.6rem;
 }
 .recipe-nav__user-photo {
   height: 5rem;
@@ -255,12 +282,12 @@ body {
   display: flex;
   flex: 0 0 33%;
   flex-direction: column;
-  justify-content: space-between;
   border-bottom-left-radius: 8px;
 }
 
 .result {
   list-style: none;
+  color: #fff;
 }
 
 .preview {
@@ -272,7 +299,12 @@ body {
   gap: 2rem;
   align-items: center;
   padding: 1.6rem 3.6rem;
+  margin: 1.6rem 0 !important;
   text-decoration: none;
+}
+.preview__link--active {
+  background-image: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+  color: #fff !important;
 }
 .preview__fig > img {
   width: 5rem;
@@ -291,6 +323,13 @@ body {
   background-image: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
+}
+.preview__title--active {
+  color: var(--color-grey-light-1);
+}
+.preview__publisher {
+  color: var(--color-grey-light-4);
+  font-weight: 500;
 }
 
 .recipe-view {
@@ -406,6 +445,11 @@ body {
   justify-content: center;
 }
 .recipe__bookmark-icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  fill: var(--color-grey-dark-2);
+}
+.recipe__bookmark-icon-bookmarked {
   height: 2.5rem;
   width: 2.5rem;
   fill: #fff;
