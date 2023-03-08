@@ -39,8 +39,8 @@ export default class View {
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
 
-    this._clear();
     this._data = data;
+    this._clear();
     const markUp = this._generateMarkUp();
     this._parentEl.insertAdjacentHTML("afterbegin", markUp);
   }

@@ -1,17 +1,14 @@
-// Import Icons
-import icons from "url:../../img/icons.svg";
-
 // Import View Parent Class
 import View from "./view.js";
 
 class SearchResultView extends View {
   _parentEl = document.querySelector(".result");
-  _SearchInputField = document.querySelector(".search__input");
+  _searchInputField = document.querySelector(".search__input");
   _errorMessage = "No Recipe Found! Please Try Again!";
 
   //  Recipe Search Results Event Handler - Publisher Pattern
   searchResultHandler(handler) {
-    this._SearchInputField.addEventListener("keypress", function (e) {
+    this._searchInputField.addEventListener("keypress", function (e) {
       if (e.key === "Enter") {
         e.preventDefault();
         handler(e.target.value.toLowerCase());
@@ -21,7 +18,7 @@ class SearchResultView extends View {
 
   // Recipe Search Results HTML Markup
   _generateMarkUp() {
-    this._SearchInputField.value = "";
+    this._searchInputField.value = "";
 
     return this._data.map(this._resultMarkUp).join("");
   }

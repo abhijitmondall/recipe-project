@@ -30,13 +30,12 @@ const controlRecipes = async function () {
     // Call loadRecipe Method From model & Pass Recipe ID
     await model.loadRecipe(ID);
 
-    // Call render Method by searchResultView to render search results
-    searchResultView.render(model.getSearchResultsPage());
+    // // Call render Method by searchResultView to render search results
+    // searchResultView.render(model.getSearchResultsPage());
 
     // Render Bookmarks
     bookmarksView.render(model.state.bookmarks);
 
-    console.log(model.state.bookmarks);
     // Total Numbers Of Bookmarks
     bookmarksView.totalBookmarks(model.state.totalBookmarks);
 
@@ -59,6 +58,7 @@ const controlRecipes = async function () {
  */
 const controlRecipeSearchResult = async function (query) {
   try {
+    if (!query) return;
     // Call renderSpinner Method by searchResultView
     searchResultView.renderSpinner();
 
@@ -116,19 +116,20 @@ const controlBookmarks = function () {
  * Init function to control event handler - Subscribe Pattern
  */
 const init = function () {
+  // Bookmarks Handler
+  recipeView.renderBookmarksHandler(controlAddBookmarks);
+
+  // Bookmarks Render
+  bookmarksView.addHandlerBookmarks(controlBookmarks);
+
   // Call addHandlerRender Method From recipeView
   recipeView.recipeRenderHandler(controlRecipes);
 
   // Call addSearchResultHandler Method From searchResultView
   searchResultView.searchResultHandler(controlRecipeSearchResult);
 
+  // Pagination Render Handler
   paginationView.paginationPageHandler(controlPagination);
-
-  // Bookmarks Handler
-  recipeView.renderBookmarksHandler(controlAddBookmarks);
-
-  // Bookmarks Render
-  bookmarksView.addHandlerBookmarks(controlBookmarks);
 };
 
 // Init Function Call

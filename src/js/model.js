@@ -165,5 +165,3 @@ export const deleteBookmark = function (id) {
   if (storage) state.bookmarks = JSON.parse(storage);
   if (total) state.totalBookmarks = JSON.parse(total);
 })();
-
-console.log(state.bookmarks);
