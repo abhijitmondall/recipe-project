@@ -9,7 +9,7 @@ export const API_URL4 =
   "https://forkify-api.herokuapp.com/api/v2/recipes?search=";
 
 // Recipes Search Limit
-export const RECIPE_SEARCH_LIMIT = 10;
+export const RECIPE_SEARCH_LIMIT = 100;
 
 // API Key
 export const API_KEY1 = "e2b21b44918b4b75870248f22983908a";
