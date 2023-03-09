@@ -23,4 +23,4 @@ export const TIMEOUT_SEC = 10;
 
 // Page Limit
 
-export const PER_PAGE_LOAD = 10;
+export const PER_PAGE_LOAD = 12;
