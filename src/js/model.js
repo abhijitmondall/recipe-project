@@ -27,56 +27,56 @@ export const state = {
  */
 export const loadRecipe = async function (ID) {
   try {
-    // const data = await getJSON(
-    //   `${config.API_URL}${ID}/information?apiKey=${config.API_KEY1}`
-    // );
-
     const data = await getJSON(
-      `${config.API_URL3}${ID}?key=${config.API_KEY3}`
+      `${config.API_URL}${ID}/information?apiKey=${config.API_KEY1}`
     );
+
+    // const data = await getJSON(
+    //   `${config.API_URL3}${ID}?key=${config.API_KEY3}`
+    // );
 
     let finalData = data;
 
     // This is a public API so if one public API is crossed the limit then fetch another public API
-    // if (data.code === 402) {
-    //   const data = await getJSON(
-    //     `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
-    //   );
+    if (data.code === 402) {
+      const data = await getJSON(
+        `${config.API_URL}${ID}/information?apiKey=${config.API_KEY2}`
+      );
 
-    //   if (data.status === "failure")
-    //     throw new Error(`${data.message} (${data.code})`);
+      if (data.status === "failure")
+        throw new Error(`${data.message} (${data.code})`);
 
-    //   finalData = data;
-    // }
+      finalData = data;
+    }
 
-    // const recipe = finalData;
-
-    // state.recipe = {
-    //   id: recipe.id + "",
-    //   title: recipe.title,
-    //   summary: recipe.summary,
-    //   likes: recipe.aggregateLikes,
-    //   publisher: recipe.sourceName,
-    //   sourceUrl: recipe.sourceUrl,
-    //   image: recipe.image,
-    //   instructions: recipe.instructions,
-    //   servings: recipe.servings,
-    //   cookingTime: recipe.readyInMinutes,
-    //   ingredients: recipe.extendedIngredients,
-    // };
-
-    const { recipe } = finalData.data;
+    const recipe = finalData;
 
     state.recipe = {
-      id: recipe.id,
+      id: recipe.id + "",
       title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
+      summary: recipe.summary,
+      likes: recipe.aggregateLikes,
+      publisher: recipe.sourceName,
+      sourceUrl: recipe.sourceUrl,
+      image: recipe.image,
+      instructions: recipe.instructions,
       servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
+      cookingTime: recipe.readyInMinutes,
+      ingredients: recipe.extendedIngredients,
     };
+
+    // const { recipe } = finalData.data;
+
+    // state.recipe = {
+    //   id: recipe.id,
+    //   title: recipe.title,
+    //   publisher: recipe.publisher,
+    //   sourceUrl: recipe.source_url,
+    //   image: recipe.image_url,
+    //   servings: recipe.servings,
+    //   cookingTime: recipe.cooking_time,
+    //   ingredients: recipe.ingredients,
+    // };
 
     if (state.bookmarks.some((bookmark) => bookmark.id === ID)) {
       state.recipe.bookmarked = true;
@@ -94,29 +94,40 @@ export const loadRecipe = async function (ID) {
  */
 export const loadRecipeSearchResults = async function (query) {
   try {
-    // const data = await getJSON(
-    //   `${config.API_URL2}${query}&number=${config.RECIPE_SEARCH_LIMIT}&apiKey=${config.API_KEY1}`
-    // );
-
-    const data = await getJSON(
-      `${config.API_URL4}${query}&key=${config.API_KEY3}`
+    const data1 = await getJSON(
+      `${config.API_URL2}${query}&number=${config.RECIPE_SEARCH_LIMIT}&apiKey=${config.API_KEY1}`
     );
 
-    // state.search.results = data.map((recipe) => {
-    //   return {
-    //     id: recipe.id + "",
-    //     title: recipe.title,
-    //     likes: recipe.likes,
-    //     image: recipe.image,
-    //   };
+    let data = data1;
 
-    state.search.results = data.data.recipes.map((recipe) => {
+    // This is a public API so if one public API is crossed the limit then fetch another public API
+    if (data1.code === 402) {
+      const data1 = await getJSON(
+        `${config.API_URL2}${query}&number=${config.RECIPE_SEARCH_LIMIT}&apiKey=${config.API_KEY2}`
+      );
+
+      data = data1;
+    }
+
+    // const data = await getJSON(
+    //   `${config.API_URL4}${query}&key=${config.API_KEY3}`
+    // );
+
+    state.search.results = data.map((recipe) => {
       return {
-        id: recipe.id,
+        id: recipe.id + "",
         title: recipe.title,
-        publisher: recipe.publisher,
-        image: recipe.image_url,
+        likes: recipe.likes,
+        image: recipe.image,
       };
+
+      // state.search.results = data.data.recipes.map((recipe) => {
+      //   return {
+      //     id: recipe.id,
+      //     title: recipe.title,
+      //     publisher: recipe.publisher,
+      //     image: recipe.image_url,
+      //   };
     });
 
     state.search.pageNumber = 1;
