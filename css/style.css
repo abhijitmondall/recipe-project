@@ -280,6 +280,9 @@ body {
   align-items: center;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  z-index: 999999;
+  position: sticky;
+  top: 0;
 }
 
 .recipe-container {
